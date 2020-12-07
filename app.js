@@ -4,8 +4,12 @@ var questions = document.getElementById('Questions')
 var nextBtn = document.querySelector('.next-btn')
  var strtBtn = document.querySelector('.start-btn')
 
-var questionCounter =0; 
+var questionIndex =0;
+var timer = 0; 
 
+
+
+/** */
 function startBtn(){
     strtBtn.classList.add("hidden");
     console.log(strtBtn)
@@ -15,6 +19,7 @@ function startBtn(){
     nextBtn.classList.remove("hidden");
 
 }   
+
 function endGame(){
     strtBtn.classList.add("hidden");
     console.log('is my function endgame working?')
@@ -30,22 +35,31 @@ function endGame(){
 
 function nextButton(){
     
-    questionCounter = questionCounter +1
-    console.log(questionCounter)
+    questionIndex = questionIndex +1
+    console.log(questionIndex)
     quiz()
     
-    if(questionCounter>=3){
+    if(questionCounter>= q.length){
         
         endGame()
     }
 }
+
+
+
+function createChoices(){
+
+    questions.innerHTML = '';
+    for(let i =0;i<q[questionIndex].choices.length;i++ ){
+        
+        console.log('inside loop create choices')
+        var answerBtn = document.createElement('button')
+        answerBtn.innerHTML += q[questionIndex].choices[i].choice
+        console.log(questions)
+        questions.appendChild(answerBtn)
+    }
     
-
-
-
-nextBtn.addEventListener('click', nextButton)
-
-strtBtn.addEventListener('click',startBtn )
+}
 
 
 
@@ -54,9 +68,9 @@ strtBtn.addEventListener('click',startBtn )
 const q = [
     {question: 'what is 2+2?',
     choices: [{choice:'2'},
-{choice:'3'},
-{choice:'4'},
-{choice:'5'}],
+    {choice:'3'},
+    {choice:'4'},
+    {choice:'5'}],
     answer: 3,
 } ,
 {question: 'what is 2+0?',
@@ -85,17 +99,6 @@ answer: 4,
 
 
 
-function createChoices(){
-    for(let i =0;i<q[questionCounter].choices.length;i++ ){
-        
-        console.log('inside loop create choices')
-        var answerBtn = document.createElement('button')
-        answerBtn.innerHTML += q[questionCounter].choices[i].choice
-        console.log(questions)
-        questions.appendChild(answerBtn)
-    }
-
-}
 
 
 
@@ -104,7 +107,7 @@ function createChoices(){
 function quiz(){
     
     // while(questionCounter <5){
-        questionContainerElement.innerText = q[questionCounter].question
+        questionContainerElement.innerText = q[questionIndex].question
         createChoices()
         
         
@@ -113,5 +116,8 @@ function quiz(){
     }
     
     quiz()
-
-
+    
+    nextBtn.addEventListener('click', nextButton)
+    strtBtn.addEventListener('click',startBtn )
+    
+    
