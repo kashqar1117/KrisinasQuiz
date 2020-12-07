@@ -1,7 +1,6 @@
 var h1 = document.getElementById('h1')
 var questionContainerElement = document.getElementById('questionsConatiner')
 var questions = document.getElementById('Questions')
-var nextBtn = document.querySelector('.next-btn')
  var strtBtn = document.querySelector('.start-btn')
 
 var questionIndex =0;
@@ -10,13 +9,12 @@ var timer = 0;
 
 
 /** */
-function startBtn(){
+function startGame(){
     strtBtn.classList.add("hidden");
     console.log(strtBtn)
     questions.classList.remove("hidden");
     questionContainerElement.classList.remove("hidden");
-
-    nextBtn.classList.remove("hidden");
+    
 
 }   
 
@@ -117,7 +115,7 @@ function quiz(){
     
     quiz()
     
-    nextBtn.addEventListener('click', nextButton)
-    strtBtn.addEventListener('click',startBtn )
+    
+    strtBtn.addEventListener('click',startGame )
     
     
