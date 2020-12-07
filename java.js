@@ -14,18 +14,34 @@ function startBtn(){
 
     nextBtn.classList.remove("hidden");
 
+}   
+function endGame(){
+    strtBtn.classList.add("hidden");
+    console.log('is my function endgame working?')
+    questions.classList.add("hidden");
+    questionContainerElement.classList.add("hidden");
+    nextBtn.classList.add("hidden");
+    var inputElement = document.createElement('input');
+    questionContainerElement.appendChild(inputElement)
 
-    
-    
+
 }
+
+
 function nextButton(){
     
-questionCounter = questionCounter +1
-
-quiz()
-
-
+    questionCounter = questionCounter +1
+    console.log(questionCounter)
+    quiz()
+    
+    if(questionCounter>=3){
+        
+        endGame()
+    }
 }
+    
+
+
 
 nextBtn.addEventListener('click', nextButton)
 
