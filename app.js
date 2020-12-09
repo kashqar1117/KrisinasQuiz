@@ -154,7 +154,7 @@ function setTime() {
     var finalScore = localStorage.getItem("score");
 
    var Last =  results.innerText = "Player: " + finalinitials + " Score: " + finalScore
-    results.appendChild(Last)
+    
 })
 
 

@@ -34,6 +34,12 @@ button{
     font-size: 46px;
   
 }
+
+button:hover{
+    background-color: powderblue;
+    color: black;
+    cursor: crosshair;
+}
 input{
     color: black;
 }
@@ -42,4 +48,10 @@ input{
 }
 .initBtn{
 width: 400px;
+}
+input{
+    color:black;
+    font-size: 25px;
+    margin-bottom:4px ;
+    margin-top:9px;
 }
