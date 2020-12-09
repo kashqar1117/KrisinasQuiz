@@ -14,7 +14,7 @@ var rules = document.querySelector('.rules')
 var startTime = 20;
 var questionIndex =0; 
 var score =0;
-var highScores =[]
+var highScores =["jkhefls", 'kedhlwe', 'jdhk']
 
 
 
