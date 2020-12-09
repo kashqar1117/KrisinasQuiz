@@ -16,6 +16,7 @@ var questionIndex =0;
 var score =0;
 
 
+
 const q = [
 {question: 'what is 2+2?',
 choices: [
@@ -131,7 +132,7 @@ function endGame(){
     
 }    
 function setTime() {
-    var timerInterval = setInterval(function() {
+    setInterval(function() {
         startTime--;
       timer.textContent = startTime + " seconds left";
   
@@ -145,21 +146,25 @@ function setTime() {
 
 
 
-  initButton.addEventListener('click', function(event){
+  var finalee = initButton.addEventListener('click', function(event){
      event.preventDefault()
     var usrInit = initials.value
  
     localStorage.setItem("initials", usrInit);
     localStorage.setItem("score", score);
-
-    var finalinitials = localStorage.getItem("initials");
-    var finalScore = localStorage.getItem("score");
-
-   var Last =  results.innerText = "Player: " + finalinitials + " Score: " + finalScore
-    
+  
 })
 
+function renderScores(){
+    var finalinitials = localStorage.getItem("initials");
+    var finalScore = localStorage.getItem("score");
+    console.log(finalinitials , finalScore)
 
+    results.innerText = "Player: " + finalinitials + " Score: " + finalScore
+
+
+}
+renderScores()
 
 strtBtn.addEventListener('click',startGame )
     

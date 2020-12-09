@@ -65,8 +65,3 @@ input{
     font-size: 30px;
 }
 
-@media only screen and (max-width: 520px) {
-    * {
-      background-color: lightblue;
-    }
-  }
