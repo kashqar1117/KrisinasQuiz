@@ -163,10 +163,13 @@ function renderScores(){
     var finalScore = localStorage.getItem("score");
     console.log(finalinitials , finalScore)
 
-    results.innerText = "Player: " + finalinitials + " Score: " + finalScore
-    var name = results.innerText
+    name = "Player: " + finalinitials + " Score: " + finalScore
     highScores.push(name)
-    console.log(highScores)
+      for(var i =0; i<highScores.length; i++){
+      var p = document.createElement('p')    
+        p.innerText = highScores[i]
+        results.appendChild(p)
+      }
 
 }
 renderScores()
