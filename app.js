@@ -1,10 +1,56 @@
 var h1 = document.getElementById('h1')
 var questionContainerElement = document.getElementById('questionsConatiner')
 var questions = document.getElementById('Questions')
- var strtBtn = document.querySelector('.start-btn')
+var strtBtn = document.querySelector('.start-btn')
+var input  = document.querySelector('.initInput')
+var btn  = document.querySelector('.initBtn')
 
-var questionIndex =0;
+var questionIndex =0; 
 var timer = 0; 
+
+
+const q = [
+{question: 'what is 2+2?',
+choices: [
+{choice:'2'},
+{choice:'3'},
+{choice:'4'},
+{choice:'5'}
+],
+ answer: 4,
+} ,
+{question: 'what is 2+0?',
+choices: [
+{choice:'2'},
+{choice:'3'},
+{choice:'4'},
+{choice:'5'}
+],
+answer: 2,
+} ,
+{question: 'what is 2+1?',
+choices: [
+{choice:'2'},
+{choice:'3'},
+{choice:'4'},
+{choice:'5'}
+],
+answer: 3,
+} ,
+{question: 'what is 2+3?',
+
+choices: [
+{choice:'2'},
+{choice:'3'},
+{choice:'0'},
+{choice:'5'}
+],
+answer: 4,
+}
+]
+
+
+
 
 
 
@@ -15,34 +61,15 @@ function startGame(){
     questions.classList.remove("hidden");
     questionContainerElement.classList.remove("hidden");
     
+    showQuestion()
+}       
 
-}   
-
-function endGame(){
-    strtBtn.classList.add("hidden");
-    console.log('is my function endgame working?')
-    questions.classList.add("hidden");
-    questionContainerElement.classList.add("hidden");
-    nextBtn.classList.add("hidden");
-    var inputElement = document.createElement('input');
-    questionContainerElement.appendChild(inputElement)
-
-
-}
-
-
-function nextButton(){
+function showQuestion(){
     
-    questionIndex = questionIndex +1
-    console.log(questionIndex)
-    quiz()
     
-    if(questionCounter>= q.length){
-        
-        endGame()
-    }
-}
-
+    questionContainerElement.innerText = q[questionIndex].question
+    createChoices()
+}    
 
 
 function createChoices(){
@@ -50,70 +77,70 @@ function createChoices(){
     questions.innerHTML = '';
     for(let i =0;i<q[questionIndex].choices.length;i++ ){
         
-        console.log('inside loop create choices')
         var answerBtn = document.createElement('button')
         answerBtn.innerHTML += q[questionIndex].choices[i].choice
-        console.log(questions)
+        answerBtn.addEventListener('click', nextQuestion)
+        //look up event delagation for dynamic event listners
         questions.appendChild(answerBtn)
-    }
+    }    
     
-}
+}    
+
+function nextQuestion(event){
+    console.log(event.target.innerText)
+    questionIndex = questionIndex +1
+    //check for right or wrong answers
+    if(questionIndex>= q.length){
+        
+        endGame()
+    }else{
+        showQuestion()
+    }    
 
 
+    console.log(event.target.innerText)
+    console.log(q[questionIndex-1].answer)
 
 
-
-const q = [
-    {question: 'what is 2+2?',
-    choices: [{choice:'2'},
-    {choice:'3'},
-    {choice:'4'},
-    {choice:'5'}],
-    answer: 3,
-} ,
-{question: 'what is 2+0?',
-choices: [{choice:'2'},
-{choice:'3'},
-{choice:'4'},
-{choice:'5'}],
-answer: 1,
-} ,
-{question: 'what is 2+1?',
-choices: [{choice:'2'},
-{choice:'3'},
-{choice:'4'},
-{choice:'5'}],
-answer: 2,
-} ,
-{question: 'what is 2+3?',
-
-choices: [{choice:'2'},
-{choice:'3'},
-{choice:'0'},
-{choice:'5'}],
-answer: 4,
-}
-]
-
-
-
-
-
-
-
-
-function quiz(){
     
-    // while(questionCounter <5){
-        questionContainerElement.innerText = q[questionIndex].question
-        createChoices()
+    if(parseInt(event.target.innerText) === q[questionIndex-1].answer){
         
+        console.log('correct')
+    }else {
+        console.log('wrong')
         
-        
-        // }
-    }
+    }    
     
-    quiz()
+}    
+
+
+
+function choiceSelected(){
+   
+
+}    
+choiceSelected()
+
+
+function endGame(){
+    strtBtn.classList.add("hidden");
+    questions.classList.add("hidden");
+    questionContainerElement.classList.add("hidden");
+    input.classList.remove("hidden");
+    btn.classList.remove("hidden");
+    
+}    
+
+
+
+
+
+
+
+
+
+
+
     
     
     strtBtn.addEventListener('click',startGame )
