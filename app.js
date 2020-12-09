@@ -4,9 +4,15 @@ var questions = document.getElementById('Questions')
 var strtBtn = document.querySelector('.start-btn')
 var input  = document.querySelector('.initInput')
 var btn  = document.querySelector('.initBtn')
+var totalScore = document.querySelector(".totalScore")
+var timer = document.querySelector(".timer") 
+var initButton = document.querySelector(".initBtn")
+var initials = document.querySelector(".initInput")
+var results = document.querySelector(".scores")
 
+var startTime = 5;
 var questionIndex =0; 
-var timer = 0; 
+var score =0;
 
 
 const q = [
@@ -45,13 +51,9 @@ choices: [
 {choice:'0'},
 {choice:'5'}
 ],
-answer: 4,
+answer: 5,
 }
 ]
-
-
-
-
 
 
 /** */
@@ -60,7 +62,7 @@ function startGame(){
     console.log(strtBtn)
     questions.classList.remove("hidden");
     questionContainerElement.classList.remove("hidden");
-    
+    setTime()
     showQuestion()
 }       
 
@@ -93,33 +95,28 @@ function nextQuestion(event){
     if(questionIndex>= q.length){
         
         endGame()
-    }else{
+    }else
+    {
         showQuestion()
     }    
 
 
-    console.log(event.target.innerText)
-    console.log(q[questionIndex-1].answer)
-
-
-    
     if(parseInt(event.target.innerText) === q[questionIndex-1].answer){
         
         console.log('correct')
+        score = score +1;
+        totalScore.innerText = score
+        
+        
+        
     }else {
         console.log('wrong')
-        
+       
     }    
     
 }    
 
 
-
-function choiceSelected(){
-   
-
-}    
-choiceSelected()
 
 
 function endGame(){
@@ -130,19 +127,37 @@ function endGame(){
     btn.classList.remove("hidden");
     
 }    
+function setTime() {
+    var timerInterval = setInterval(function() {
+        startTime--;
+      timer.textContent = startTime + " seconds left";
+  
+      if(startTime === 0) {
+        timer.classList.add("hidden"); 
+        endGame()
+      }
+  
+    }, 1000);
+  }
+  initButton.addEventListener('click', function(event){
+     event.preventDefault()
+    var usrInit = initials.value
+ 
+    localStorage.setItem("initials", usrInit);
+    localStorage.setItem("score", score);
+
+})
+
+function displayScoreandInit(){
 
 
 
-
-
-
-
-
-
+}
 
 
     
-    
-    strtBtn.addEventListener('click',startGame )
+
+
+strtBtn.addEventListener('click',startGame )
     
     
