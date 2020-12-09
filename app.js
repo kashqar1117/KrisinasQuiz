@@ -10,7 +10,7 @@ var initButton = document.querySelector(".initBtn")
 var initials = document.querySelector(".initInput")
 var results = document.querySelector(".scores")
 
-var startTime = 5;
+var startTime = 500;
 var questionIndex =0; 
 var score =0;
 
@@ -139,6 +139,9 @@ function setTime() {
   
     }, 1000);
   }
+
+
+
   initButton.addEventListener('click', function(event){
      event.preventDefault()
     var usrInit = initials.value
@@ -146,16 +149,13 @@ function setTime() {
     localStorage.setItem("initials", usrInit);
     localStorage.setItem("score", score);
 
+    var finalinitials = localStorage.getItem("initials");
+    var finalScore = localStorage.getItem("score");
+
+   var Last =  results.innerText = "Name: " + finalinitials + " Score: " + finalScore
+    results.appendChild(Last)
 })
 
-function displayScoreandInit(){
-
-
-
-}
-
-
-    
 
 
 strtBtn.addEventListener('click',startGame )
