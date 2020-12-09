@@ -10,7 +10,7 @@ var initButton = document.querySelector(".initBtn")
 var initials = document.querySelector(".initInput")
 var results = document.querySelector(".scores")
 
-var startTime = 500;
+var startTime = 20;
 var questionIndex =0; 
 var score =0;
 
@@ -105,7 +105,7 @@ function nextQuestion(event){
         
         console.log('correct')
         score = score +1;
-        totalScore.innerText = score
+        totalScore.innerText = "Score: " + score
         
         
         
@@ -125,6 +125,7 @@ function endGame(){
     questionContainerElement.classList.add("hidden");
     input.classList.remove("hidden");
     btn.classList.remove("hidden");
+    timer.classList.add("hidden");
     
 }    
 function setTime() {
