@@ -9,6 +9,7 @@ var timer = document.querySelector(".timer")
 var initButton = document.querySelector(".initBtn")
 var initials = document.querySelector(".initInput")
 var results = document.querySelector(".scores")
+var rules = document.querySelector('.rules')
 
 var startTime = 20;
 var questionIndex =0; 
@@ -59,6 +60,7 @@ answer: 5,
 /** */
 function startGame(){
     strtBtn.classList.add("hidden");
+    rules.classList.add("hidden");
     console.log(strtBtn)
     questions.classList.remove("hidden");
     questionContainerElement.classList.remove("hidden");
