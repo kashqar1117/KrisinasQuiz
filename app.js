@@ -14,6 +14,7 @@ var rules = document.querySelector('.rules')
 var startTime = 20;
 var questionIndex =0; 
 var score =0;
+var highScores =[]
 
 
 
@@ -62,6 +63,7 @@ answer: 5,
 function startGame(){
     strtBtn.classList.add("hidden");
     rules.classList.add("hidden");
+    
     console.log(strtBtn)
     questions.classList.remove("hidden");
     questionContainerElement.classList.remove("hidden");
@@ -127,6 +129,7 @@ function endGame(){
     questions.classList.add("hidden");
     questionContainerElement.classList.add("hidden");
     input.classList.remove("hidden");
+    results.classList.remove('hidden');
     btn.classList.remove("hidden");
     timer.classList.add("hidden");
     
@@ -146,7 +149,7 @@ function setTime() {
 
 
 
-  var finalee = initButton.addEventListener('click', function(event){
+  initButton.addEventListener('click', function(event){
      event.preventDefault()
     var usrInit = initials.value
  
@@ -161,7 +164,9 @@ function renderScores(){
     console.log(finalinitials , finalScore)
 
     results.innerText = "Player: " + finalinitials + " Score: " + finalScore
-
+    var name = results.innerText
+    highScores.push(name)
+    console.log(highScores)
 
 }
 renderScores()
