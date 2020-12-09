@@ -153,7 +153,7 @@ function setTime() {
     var finalinitials = localStorage.getItem("initials");
     var finalScore = localStorage.getItem("score");
 
-   var Last =  results.innerText = "Name: " + finalinitials + " Score: " + finalScore
+   var Last =  results.innerText = "Player: " + finalinitials + " Score: " + finalScore
     results.appendChild(Last)
 })
 
